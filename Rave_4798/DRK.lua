@@ -131,6 +131,7 @@ profile.OnLoad = function()
 	--Variable Helpers
 	varhelper.Initialize();
 	varhelper.CreateToggle("MC", true);
+	varhelper.CreateCycle("Lockable", { [1] = "Idle", [2] = "Always", [3] = "Never" });
 	varhelper.CreateCycle('Mode', { [1] = 'Base',  [2] = 'PDT', [3] = 'MDT', [4] = 'Zerg' });
 	varhelper.CreateCycle("Priority", { [1] = "Hybrid", [2] = "Accuracy", [3] = "Power"  });
 
@@ -148,6 +149,9 @@ end
 profile.OnUnload = function()
 	--Universal Unbinds
 	helpers.DestroyUniversalBinds();
+
+	--Lockables Bind
+	AshitaCore:GetChatManager():QueueCommand(-1, "/alias delete /lock");
 
 	--Mode Cycle Unbinds
 	AshitaCore:GetChatManager():QueueCommand(-1, "/unbind ^-");
@@ -208,12 +212,14 @@ end
 
 profile.HandleDefault = function()
 	local equipment = gData.GetEquipment();
-	helpers.LockUsableEquipment(equipment);
-	
 	local player = gData.GetPlayer();
 	local environment = gData.GetEnvironment();
 	local souleater = gData.GetBuffCount('Souleater');
 	
+	if (varhelper.GetCycle("Lockable") == "Always") then
+		helpers.LockUsableEquipment(equipment);
+	end
+
 	if (varhelper.GetCycle("Mode") == "Zerg") then
 		gFunc.EquipSet(sets.Zerg);
 	else
@@ -223,13 +229,9 @@ profile.HandleDefault = function()
 		else
 			helpers.RestingHelper(false, sets.Resting);
 			--Engaged
-			if (player.Status == "Engaged") then 
+			if (player.Status == "Engaged") then
 				if (varhelper.GetCycle("Mode") == "Base") then
-					gFunc.EquipSet(sets["Engaged_" .. varhelper.GetCycle("Priority")]);
-					
-					if (souleater == 1) then
-						gFunc.EquipSet(sets.Souleater);
-					end
+					gFunc.EquipSet("Engaged_" .. varhelper.GetCycle("Priority"));
 				else
 					gFunc.EquipSet(varhelper.GetCycle("Mode"));
 				end
@@ -238,7 +240,7 @@ profile.HandleDefault = function()
 					gFunc.EquipSet(sets.Idle);
 					
 					helpers.DucalAketonCheck(environment);
-								
+					
 					--Lockable Override
 					if (varhelper.GetCycle("Lockable") == "Idle") then
 						gFunc.EquipSet(helpers.BuildLockableSet(equipment));
