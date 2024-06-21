@@ -6,7 +6,6 @@ local settings = {
 	GearFastCast = 0.07;
 };
 
-local profile = {};
 local sets = {
 	Idle = {
 		Head = "Homam Zucchetto",
@@ -425,6 +424,8 @@ local sets = {
 
 sets.Midcast = gFunc.Combine(sets.Evasion, sets.Midcast);
 sets.Idle = gFunc.Combine(sets.Idle, sets.MovementSpeed);
+
+local profile = {};
 profile.Sets = sets;
 
 profile.OnLoad = function()

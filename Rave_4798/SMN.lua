@@ -6,7 +6,6 @@ local settings = {
 	GearFastCast = 0.04;
 };
 
-local profile = {};
 local sets = {
 	Idle = {
 		Main = "Terra's Staff",
@@ -121,6 +120,8 @@ local sets = {
 	},
 	WeatherMatch = {Head = "Summoner's Horn"}
 }
+
+local profile = {};
 profile.Sets = sets;
 
 local function HandlePetAction(petAction)

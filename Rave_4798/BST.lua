@@ -6,7 +6,6 @@ local settings = {
 	GearFastCast = 0.02;
 };
 
-local profile = {};
 local sets = {
 	Idle = {
 		hands = "Hct. Mittens +1",
@@ -151,6 +150,8 @@ local sets = {
 	CallBeast = {Hands = "Monster Gloves"},
 	Day = {Ear1 = "Fenrir's Earring"}
 };
+
+local profile = {};
 profile.Sets = sets;
 
 profile.OnLoad = function()

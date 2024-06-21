@@ -1,4 +1,3 @@
-local profile = {};
 local varhelper = gFunc.LoadFile('common/varhelper.lua'); 
 local helpers = gFunc.LoadFile('common/helpers.lua'); 
 local common = gFunc.LoadFile('common/common.lua'); 
@@ -10,7 +9,7 @@ local settings = {
 };
 
 local instrumentTable = {
-    ["Elegy"] = "Horn +1",
+	["Elegy"] = "Horn +1",
     ["Foe Lullaby"] = "Hamelin Flute",
     ["Requiem"] = "Hamelin Flute",
     ["Horde Lullaby"] = "Sorrowful Harp",
@@ -158,10 +157,9 @@ local sets = {
 
 sets.Endcast_BuffSong = gFunc.Combine(sets.Idle,sets.Endcast_BuffSong);
 sets.Endcast_DebuffSong = gFunc.Combine(sets.Idle,sets.Endcast_DebuffSong);
-profile.Sets = sets;
 
-profile.Packer = {
-};
+local profile = {};
+profile.Sets = sets;
 
 profile.OnLoad = function()
     gSettings.AllowAddSet = true;

@@ -1,4 +1,3 @@
-local profile = {};
 local varhelper = gFunc.LoadFile("common/varhelper.lua"); 
 local helpers = gFunc.LoadFile("common/helpers.lua"); 
 local common = gFunc.LoadFile("common/common.lua"); 
@@ -212,6 +211,8 @@ local sets = {
 	},
 	Day = {Ear1 = "Fenrir's Earring"}
 };
+
+local profile = {};
 profile.Sets = sets;
 
 profile.OnLoad = function()

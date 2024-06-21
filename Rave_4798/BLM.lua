@@ -11,7 +11,6 @@ settings.FirstNukeThreshold3 = settings.NukeSetMp + 70
 settings.FirstNukeThreshold2 = settings.FirstNukeThreshold3 + 50;
 settings.FirstNukeThreshold1 = settings.FirstNukeThreshold2 + 20;
 
-local profile = {};
 local sets = {
 	Idle = {
 		Main = "Terra's Staff",
@@ -216,6 +215,8 @@ local sets = {
 	FirstNuke2 = {Head = "Zenith Crown +1", Ring1 = "Serket Ring"},
 	FirstNuke3 = {Head = "Zenith Crown +1"}
 };
+
+local profile = {};
 profile.Sets = sets;
 
 profile.OnLoad = function()

@@ -1,4 +1,3 @@
-local profile = {};
 local varhelper = gFunc.LoadFile('common/varhelper.lua'); 
 local helpers = gFunc.LoadFile('common/helpers.lua'); 
 local common = gFunc.LoadFile('common/common.lua'); 
@@ -103,10 +102,8 @@ local sets = {
 	}
 };
 
+local profile = {};
 profile.Sets = sets;
-
-profile.Packer = {
-};
 
 profile.OnLoad = function()
     gSettings.AllowAddSet = true;
