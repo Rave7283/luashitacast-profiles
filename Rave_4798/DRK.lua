@@ -1,6 +1,6 @@
-local varhelper = gFunc.LoadFile('common/varhelper.lua'); 
-local helpers = gFunc.LoadFile('common/helpers.lua'); 
-local common = gFunc.LoadFile('common/common.lua'); 
+local varhelper = gFunc.LoadFile("common/varhelper.lua"); 
+local helpers = gFunc.LoadFile("common/helpers.lua"); 
+local common = gFunc.LoadFile("common/common.lua"); 
 
 local settings = {
 	GearFastCast = 0.07;
@@ -8,22 +8,22 @@ local settings = {
 
 local sets = {
 	Idle = {
-		Neck = 'Parade Gorget'
+		Neck = "Parade Gorget"
 	},
 	Resting = {},
 	Engaged_Hybrid = {
-        Head = 'Valkyrie\'s Mask',
-        Neck = 'Peacock Amulet',
-        Ear1 = 'Merman\'s Earring',
-        Ear2 = 'Merman\'s Earring',
-        Body = 'Haubergeon',
-        Hands = 'Custom M Gloves',
-        Ring1 = 'Rajas Ring',
-        Ring2 = 'Toreador\'s Ring',
-        Back = 'Amemet Mantle +1',
-        Waist = 'Swift Belt',
-        Legs = 'Ryl.Kgt. Breeches',
-        Feet = 'Marine M Boots'
+        Head = "Valkyrie's Mask",
+        Neck = "Peacock Amulet",
+        Ear1 = "Merman's Earring",
+        Ear2 = "Merman's Earring",
+        Body = "Haubergeon",
+        Hands = "Custom M Gloves",
+        Ring1 = "Rajas Ring",
+        Ring2 = "Toreador's Ring",
+        Back = "Amemet Mantle +1",
+        Waist = "Swift Belt",
+        Legs = "Ryl.Kgt. Breeches",
+        Feet = "Marine M Boots"
 	},
 	Engaged_Accuracy = {
 	},
@@ -32,18 +32,18 @@ local sets = {
 	WS_Single = {
 	},	
 	WS_Hybrid = {
-        Head = 'Valkyrie\'s Mask',
-        Neck = 'Peacock Amulet',
-        Ear1 = 'Merman\'s Earring',
-        Ear2 = 'Merman\'s Earring',
-        Body = 'Haubergeon',
-        Hands = 'Custom M Gloves',
-        Ring1 = 'Rajas Ring',
-        Ring2 = 'Toreador\'s Ring',
-        Back = 'Amemet Mantle +1',
-        Waist = 'Life Belt',
-        Legs = 'Ryl.Kgt. Breeches',
-        Feet = 'Marine M Boots'
+        Head = "Valkyrie's Mask",
+        Neck = "Peacock Amulet",
+        Ear1 = "Merman's Earring",
+        Ear2 = "Merman's Earring",
+        Body = "Haubergeon",
+        Hands = "Custom M Gloves",
+        Ring1 = "Rajas Ring",
+        Ring2 = "Toreador's Ring",
+        Back = "Amemet Mantle +1",
+        Waist = "Life Belt",
+        Legs = "Ryl.Kgt. Breeches",
+        Feet = "Marine M Boots"
 	},
 	WS_Accuracy = {
 	},
@@ -117,9 +117,9 @@ profile.OnLoad = function()
 	AshitaCore:GetChatManager():QueueCommand(-1, "/bind ^- /lac fwd mode");
 	AshitaCore:GetChatManager():QueueCommand(-1, "/alias /mode /lac fwd mode");
 	AshitaCore:GetChatManager():QueueCommand(-1, "/alias /base /lac fwd base");
-	AshitaCore:GetChatManager():QueueCommand(-1, '/alias /mdt /lac fwd mdt');
-	AshitaCore:GetChatManager():QueueCommand(-1, '/alias /pdt /lac fwd pdt');
-	AshitaCore:GetChatManager():QueueCommand(-1, '/alias /zerg /lac fwd zerg');
+	AshitaCore:GetChatManager():QueueCommand(-1, "/alias /mdt /lac fwd mdt");
+	AshitaCore:GetChatManager():QueueCommand(-1, "/alias /pdt /lac fwd pdt");
+	AshitaCore:GetChatManager():QueueCommand(-1, "/alias /zerg /lac fwd zerg");
 	
 	--Tp Cycle Binds
 	AshitaCore:GetChatManager():QueueCommand(-1, "/bind ^= /lac fwd baseset");
@@ -132,15 +132,15 @@ profile.OnLoad = function()
 	varhelper.Initialize();
 	varhelper.CreateToggle("MC", true);
 	varhelper.CreateCycle("Lockable", { [1] = "Idle", [2] = "Always", [3] = "Never" });
-	varhelper.CreateCycle('Mode', { [1] = 'Base',  [2] = 'PDT', [3] = 'MDT', [4] = 'Zerg' });
+	varhelper.CreateCycle("Mode", { [1] = "Base",  [2] = "PDT", [3] = "MDT", [4] = "Zerg" });
 	varhelper.CreateCycle("Priority", { [1] = "Hybrid", [2] = "Accuracy", [3] = "Power"  });
 
 	--Delay Midcast binds
 	AshitaCore:GetChatManager():QueueCommand(-1, "/alias /mc /lac fwd mc");
 
 	--Macros
-	AshitaCore:GetChatManager():QueueCommand(1, '/macro book 10');
-    AshitaCore:GetChatManager():QueueCommand(1, '/macro set 1');
+	AshitaCore:GetChatManager():QueueCommand(1, "/macro book 10");
+    AshitaCore:GetChatManager():QueueCommand(1, "/macro set 1");
 	
 	--tCrossbar
 	AshitaCore:GetChatManager():QueueCommand(1, "/addon load tcrossbar");
@@ -214,7 +214,7 @@ profile.HandleDefault = function()
 	local equipment = gData.GetEquipment();
 	local player = gData.GetPlayer();
 	local environment = gData.GetEnvironment();
-	local souleater = gData.GetBuffCount('Souleater');
+	local souleater = gData.GetBuffCount("Souleater");
 	
 	if (varhelper.GetCycle("Lockable") == "Always") then
 		helpers.LockUsableEquipment(equipment);
@@ -256,11 +256,11 @@ end
 profile.HandleAbility = function()
 	local ability = gData.GetAction();
 	
-	if(ability.Name == 'Last Resort') then
+	if(ability.Name == "Last Resort") then
 		gFunc.EquipSet(sets.LastResort);
-	elseif (ability.Name == 'Souleater') then
+	elseif (ability.Name == "Souleater") then
 		gFunc.EquipSet(sets.Souleater);
-	elseif (ability.Name == 'Weapon Bash') then
+	elseif (ability.Name == "Weapon Bash") then
 		gFunc.EquipSet(sets.WeaponBash);
 	end
 end
@@ -268,9 +268,9 @@ end
 profile.HandleItem = function()
 	local item = gData.GetAction();
 	
-	if (item.Name == 'Prism Powder') then
+	if (item.Name == "Prism Powder") then
 		gFunc.EquipSet(common.sets.Invisible);
-	elseif (item.Name == 'Silent Oil') then
+	elseif (item.Name == "Silent Oil") then
 		gFunc.EquipSet(common.sets.Sneak);
 	end
 end
@@ -294,14 +294,14 @@ profile.HandleMidcast = function()
 	gFunc.InterimEquipSet(sets.Midcast);
 	
 	--Elemental Magic
-	if (spell.Skill == 'Elemental Magic') then	
+	if (spell.Skill == "Elemental Magic") then	
 		gFunc.EquipSet(sets.Endcast_Elemental);
 		
 		if(helpers.ObiCheck(environment, spell.Element)) then
-			gFunc.Equip('waist', common.ElementalObiTable[spell.Element]);
+			gFunc.Equip("waist", common.ElementalObiTable[spell.Element]);
 		end
 	--Dark Magic
-	elseif (spell.Skill == 'Dark Magic') then
+	elseif (spell.Skill == "Dark Magic") then
 		gFunc.EquipSet(sets.Endcast_Dark);
 		if (spell.Name == "Drain" or spell.Name == "Drain II" or spell.Name == "Aspir")  then
 			--Obi Check
@@ -310,10 +310,10 @@ profile.HandleMidcast = function()
 			end
 		end	
 	--Enhancing Magic
-	elseif (spell.Skill == 'Enfeebling Magic') then
+	elseif (spell.Skill == "Enfeebling Magic") then
 		gFunc.EquipSet(sets.Endcast_Enfeebling);
 	--Enhancing Magic
-	elseif (spell.Skill == 'Enhancing Magic') then
+	elseif (spell.Skill == "Enhancing Magic") then
 		gFunc.EquipSet(sets.Endcast_Enhancing);
 	else
 		gFunc.EquipSet(sets.Endcast);

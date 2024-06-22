@@ -4,12 +4,12 @@ local common = gFunc.LoadFile("common/common.lua");
 
 local settings = {
 	NukeSetHp = 968,
-	NukeSetMp = 780,
+	NukeSetMp = 810,
 	GearFastCast = 0.04;
 };
-settings.FirstNukeThreshold3 = settings.NukeSetMp + 70
-settings.FirstNukeThreshold2 = settings.FirstNukeThreshold3 + 50;
-settings.FirstNukeThreshold1 = settings.FirstNukeThreshold2 + 20;
+settings.FirstNukeThreshold3 = settings.NukeSetMp + 55
+settings.FirstNukeThreshold2 = settings.FirstNukeThreshold3 + 20;
+settings.FirstNukeThreshold1 = settings.FirstNukeThreshold2 + 50;
 
 local sets = {
 	Idle = {
@@ -176,7 +176,7 @@ local sets = {
         Feet = "Rostrum Pumps"
 	},
 	Endcast_EnfeeblingMnd = {
-		Ring1 = "Sapphire Ring",
+		Ring1 = "Aqua Ring",
         Ring2 = "Thunder Ring",
 	},
 	Endcast_EnfeeblingInt = {
@@ -199,8 +199,9 @@ local sets = {
 		Head = "Zenith Crown +1",
 		Neck = "Faith Torque",
         Body = "Mahatma Hpl.",
-		Ring1 = "Sapphire Ring",
-		Ring2 = "Thunder Ring",
+		Ring1 = "Serket Ring",
+		Ring2 = "Aqua Ring",
+		Waist = "Swift Belt",
         Back = "Prism Cape",
         Legs = "Mahatma Slops",
         Feet = "Rostrum Pumps"
@@ -212,8 +213,9 @@ local sets = {
 	DayMatch = {Legs = "Sorcerer's Tonban"},
 	MagicBurst = {Hands = "Src. Gloves +1"},
 	FirstNuke1 = {Ammo = "Hedgehog Bomb", Head = "Zenith Crown +1", Ring1 = "Serket Ring"},
-	FirstNuke2 = {Head = "Zenith Crown +1", Ring1 = "Serket Ring"},
-	FirstNuke3 = {Head = "Zenith Crown +1"}
+	FirstNuke2 = {Head = "Zenith Crown +1", Ammo = "Hedgehog Bomb"},
+	FirstNuke3 = {Head = "Zenith Crown +1"},
+	MpBuffer = {Ring1 = "Serket Ring"}
 };
 
 local profile = {};
@@ -474,6 +476,8 @@ profile.HandleMidcast = function()
 		end
 	--Enhancing Magic
 	elseif (spell.Skill == "Enhancing Magic") then
+		gFunc.ForceEquipSet(sets.MpBuffer);
+
 		if spell.Name == "Stoneskin" then
 			gFunc.EquipSet(sets.Endcast_Stoneskin);
 		else 
