@@ -108,8 +108,7 @@ local sets = {
         Hands = "Choral Cuffs",
         Back = "Astute Cape",
         Waist = "Sonic Belt",
-        Legs = "Byakko's Haidate",
-        Feet = "Sha'ir Crackows"
+        Legs = "Byakko's Haidate"
 	},
 	Endcast_DebuffSong = {
 		Head = "Bard's Roundlet",
@@ -123,7 +122,7 @@ local sets = {
         Back = "Astute Cape",
         Waist = "Corsette +1",
         Legs = "Mahatma Slops",
-        Feet = "Sha'ir Crackows"
+        Feet = "Dance Shoes +1"
 	},
 	Preshot = {ammo = "Pebble"},
 	Midshot = {},
