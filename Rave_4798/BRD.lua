@@ -49,9 +49,11 @@ local sets = {
 	},
 	Resting = {
 		Main = "Pluto's Staff",
+		Head = "Hydra Beret",
         Neck = "Checkered Scarf",
         Ear1 = "Relaxing Earring",
         Body = "Mahatma Hpl.",
+		Hands = "Hydra Gloves",
         Legs = "Baron's Slops",
 		Feet = "Hydra Gaiters"
 	},

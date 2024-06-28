@@ -195,10 +195,12 @@ local sets = {
 	},
 	BreathProc = {
 		Head = "Drachen Armet",
+		Neck = "Evasion Torque",
 		Ear1 = "Cassie Earring",
 		Body = "Homam Corazza",
 		Hands = "Homam Manopolas",
-		Ring2 = "Bomb Queen Ring",
+		Ring1 = "Bomb Queen Ring",
+		Ring2 = "Toreador's Ring",
 		Back = "Gigant Mantle",
 		Waist = "Ocean Sash",
 		Legs = "Homam Cosciales",
@@ -206,6 +208,7 @@ local sets = {
 	},
 	BreathEffect = {
 		Head = "Wyrm Armet",
+		Body = "Wyvern Mail",
 		Legs = "Drachen Brais",
 		Feet = "Homam Gambieras" 
 	},

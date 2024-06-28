@@ -30,6 +30,7 @@ local sets = {
 		Ear1 = "Relaxing Earring",
 		Ear2 = "Magnetic Earring",
 		Body = "Mahatma Hpl.",
+		Hands = "Hydra Gloves",
 		Waist = "Hierarch Belt",
 		Legs = "Baron's Slops",
 		Feet = "Hydra Gaiters"
