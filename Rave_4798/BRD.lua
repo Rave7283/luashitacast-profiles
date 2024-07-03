@@ -64,7 +64,7 @@ local sets = {
 		Feet = "Rostrum Pumps"
 	},
 	Precast_Song = {
-		Head = "Bard's Roundlet",
+		Head = "Brd. Roundlet +1",
         Ear2 = "Loquac. Earring",
 		Body = "Sha'ir Manteel",
         Hands = "Seiryu's Kote",
@@ -105,7 +105,7 @@ local sets = {
         Feet = "Suzaku's Sune-Ate"
 	},
 	Endcast_BuffSong = {
-		Head = "Bard's Roundlet",
+		Head = "Brd. Roundlet +1",
 		Ear1 = "Musical Earring",
         Hands = "Choral Cuffs",
         Back = "Astute Cape",
@@ -113,7 +113,7 @@ local sets = {
         Legs = "Byakko's Haidate"
 	},
 	Endcast_DebuffSong = {
-		Head = "Bard's Roundlet",
+		Head = "Brd. Roundlet +1",
         Neck = "Temp. Torque",
         Ear1 = "Musical Earring",
         Ear2 = "Beastly Earring",

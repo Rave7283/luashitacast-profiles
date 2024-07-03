@@ -96,7 +96,7 @@ local sets = {
 	},
 	Endcast_Acc = {
 		Ammo = "Phtm. Tathlum",
-        Head = "Sorcerer's Petas.",
+        Head = "Src. Petasos +1",
         Neck = "Elemental Torque",
         Ear1 = "Moldavite Earring",
         Ear2 = "Novio Earring",
@@ -111,7 +111,7 @@ local sets = {
 	},
 	Endcast_ElementalDebuff = {
         Ammo = "Phtm. Tathlum",
-        Head = "Sorcerer's Petas.",
+        Head = "Src. Petasos +1",
         Neck = "Elemental Torque",
         Ear1 = "Loquac. Earring",
         Ear2 = "Phtm. Earring +1",
@@ -259,7 +259,7 @@ profile.OnLoad = function()
 	varhelper.Initialize();
 	varhelper.CreateCycle("Lockable", { [1] = "Idle", [2] = "Always", [3] = "Never" });
 	varhelper.CreateCycle("Nuke Mode", { [1] = "Power", [2] = "Hybrid", [3] = "Acc" });
-	varhelper.CreateToggle("Force HP", false);
+	varhelper.CreateToggle("Force HP", true);
 	varhelper.CreateToggle("MB", false);
 	varhelper.CreateToggle("FN", true);
 	varhelper.CreateToggle("MC", true);
