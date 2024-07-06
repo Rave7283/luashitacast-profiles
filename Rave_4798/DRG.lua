@@ -207,7 +207,7 @@ local sets = {
 		Feet = "Homam Gambieras"        
 	},
 	BreathEffect = {
-		Head = "Wyrm Armet",
+		Head = "Wym. Armet +1",
 		Body = "Wyvern Mail",
 		Legs = "Drachen Brais",
 		Feet = "Homam Gambieras" 
