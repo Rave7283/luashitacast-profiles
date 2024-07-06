@@ -41,7 +41,7 @@ local sets = {
 		Ear1 = "Beastly Earring",
 		Ear2 = "Brutal Earring",
 		Body = "Kirin's Osode",
-		Hands = "War Gloves +1",
+		Hands = "Dusk Gloves +1",
 		Ring1 = "Rajas Ring",
 		Ring2 = "Toreador's Ring",
 		Back = "Forager's Mantle",
@@ -74,7 +74,7 @@ local sets = {
         Ring2 = "Merman's Ring",
         Back = "Amemet Mantle +1",
         Waist = "Scout's Belt",
-        Legs = "Dusk Trousers +1",
+        Legs = "Sct. Braccae +1",
         Feet = "Sct. Socks +1"
 	},
 	WS_Power = {
@@ -88,7 +88,7 @@ local sets = {
         Ring2 = "Flame Ring",
         Back = "Amemet Mantle +1",
         Waist = "Scout's Belt",
-        Legs = "Dusk Trousers +1",
+        Legs = "Sct. Braccae +1",
         Feet = "Sct. Socks +1"
 	},
 	WS_Acc = {
@@ -102,7 +102,7 @@ local sets = {
         Ring2 = "Merman's Ring",
         Back = "Amemet Mantle +1",
         Waist = "Scout's Belt",
-        Legs = "Dusk Trousers +1",
+        Legs = "Sct. Braccae +1",
         Feet = "Sct. Socks +1"
 	},
 	Preshot = {
@@ -120,7 +120,7 @@ local sets = {
         Ring2 = "Flame Ring",
         Back = "Amemet Mantle +1",
         Waist = "Scout's Belt",
-        Legs = "Dusk Trousers +1",
+        Legs = "Sct. Braccae +1",
         Feet = "Sct. Socks +1"
 	},
 	Midshot_Hybrid = {
@@ -134,7 +134,7 @@ local sets = {
         Ring2 = "Merman's Ring",
         Back = "Amemet Mantle +1",
         Waist = "Scout's Belt",
-        Legs = "Dusk Trousers +1",
+        Legs = "Sct. Braccae +1",
         Feet = "Sct. Socks +1"
 	},
 	Midshot_Accuracy = {
@@ -148,7 +148,7 @@ local sets = {
         Ring2 = "Merman's Ring",
         Back = "Amemet Mantle +1",
         Waist = "Scout's Belt",
-        Legs = "Dusk Trousers +1",
+        Legs = "Sct. Braccae +1",
         Feet = "Blood Greaves"
 	},
 	Precast = {Ear1 = "Loquac. Earring"},
@@ -166,6 +166,7 @@ local sets = {
 	},
 	Endcast = {
 		Ear1 = "Loquac. Earring",
+		Hands = "Dusk Gloves +1",
 		Waist = "Sonic Belt",
 		Legs = "Byakko's Haidate"
 	},
@@ -191,6 +192,7 @@ local sets = {
 	Enmity = {
 		Ear2 = "Novia Earring",
 		Body = "Scout's Jerkin",
+		Legs = "Sct. Braccae +1",
 		Feet = "Sct. Socks +1"
 	}
 };
