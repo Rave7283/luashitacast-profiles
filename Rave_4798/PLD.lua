@@ -118,6 +118,7 @@ local sets = {
 	},
 	Endcast_Stoneskin = {
 		Head = "Homam Zucchetto",
+		Neck = "Stone Gorget",
 		Ear2 = "Magnetic Earring",
         Hands = "Homam Manopolas",
 		Waist = "Sonic Belt",
