@@ -419,11 +419,18 @@ local sets = {
         Neck = "Nanaa's Charm",
 		Hands = "Asn. Armlets +1"
     },
+	EnmityUp = {
+		Hands = "Homam Manopolas",
+		Back = "Assassin's Cape",
+		Waist = "Warwolf Belt",
+		Legs = "Assassin's Culottes"
+	},
 	MovementSpeed = {Feet = "Trotter Boots"}
 };
 
 sets.Midcast = gFunc.Combine(sets.Evasion, sets.Midcast);
 sets.Idle = gFunc.Combine(sets.Idle, sets.MovementSpeed);
+sets.Bully = gFunc.Combine(sets.EnmityUp, sets.TH);
 
 local profile = {};
 profile.Sets = sets;
@@ -621,7 +628,9 @@ profile.HandleAbility = function()
 	elseif (ability.Name == "Trick Attack") then
 		gFunc.EquipSet(sets.TrickAttack);
 	elseif (ability.Name == "Bully") then
-		gFunc.EquipSet(sets.TH);
+		gFunc.EquipSet(sets.Bully);
+	elseif (ability.Name == "Accomplice" or ability.Name == "Collaborator") then
+		gFunc.EquipSet(sets.EnmityUp);
 	end
 end
 
