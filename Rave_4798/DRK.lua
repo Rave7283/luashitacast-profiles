@@ -9,6 +9,7 @@ local settings = {
 local sets = {
 	Idle = {
 		Neck = "Parade Gorget",
+		Hands = "Homam Manopolas",
 		Legs = "Blood Cuisses"
 	},
 	Resting = {},
