@@ -420,7 +420,7 @@ local sets = {
 		Hands = "Asn. Armlets +1"
     },
 	EnmityUp = {
-		Hands = "Homam Manopolas",
+		Hands = "Asn. Armlets +1",
 		Back = "Assassin's Cape",
 		Waist = "Warwolf Belt",
 		Legs = "Assassin's Culottes"
@@ -428,8 +428,10 @@ local sets = {
 	MovementSpeed = {Feet = "Trotter Boots"}
 };
 
-sets.Midcast = gFunc.Combine(sets.Evasion, sets.Midcast);
 sets.Idle = gFunc.Combine(sets.Idle, sets.MovementSpeed);
+sets.Midcast = gFunc.Combine(sets.Evasion, sets.Midcast);
+sets.Mug = gFunc.Combine(sets.EnmityUp, sets.Mug);
+sets.Hide = gFunc.Combine(sets.EnmityUp, sets.Hide);
 sets.Bully = gFunc.Combine(sets.EnmityUp, sets.TH);
 
 local profile = {};
