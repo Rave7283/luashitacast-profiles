@@ -8,18 +8,18 @@ local settings = {
 
 local sets = {
 	Idle = {
-		Head = "Homam Zucchetto",
-		Neck = "Jeweled Collar +1",
+		Head = "Rog. Bonnet +1",
+		Neck = "Evasion Torque",
 		Ear1 = "Merman's Earring",
 		Ear2 = "Merman's Earring",
-		Body = "Homam Corazza",
-		Hands = "Homam Manopolas",
+		Body = "Scp. Harness +1",
+		Hands = "War Gloves +1",
 		Ring1 = "Merman's Ring",
         Ring2 = "Merman's Ring",
 		Back = "Boxer's Mantle",
 		Waist = "Scouter's Rope",
-		Legs = "Homam Cosciales",
-		Feet = "Homam Gambieras"
+		Legs = "Raven Hose",
+		Feet = "Dance Shoes +1"
 	},
 	Resting = {},
 	Engaged_Hybrid = {
@@ -346,11 +346,10 @@ local sets = {
 	},
 	Midshot_Bloody = {
         Head = "Maat's Cap",
-        Neck = "Peacock Amulet",
+        Neck = "Prudence Torque",
         Ear1 = "Phtm. Earring +1",
-        Ear2 = "Genin Earring",
+        Ear2 = "Phtm. Earring +1",
         Body = "Dragon Harness",
-        Hands = "Hct. Mittens +1",
         Ring1 = "Snow Ring",
         Ring2 = "Snow Ring",
         Back = "Amemet Mantle +1",
@@ -362,7 +361,9 @@ local sets = {
 		Ear2 = "Loquac. Earring",
 		Legs = "Homam Cosciales"
 	},
-	Midcast = {},
+	Midcast = {
+		Head = "Rog. Bonnet +1"
+	},
 	Endcast = {
 		Head = "Homam Zucchetto",
 		Neck = "Evasion Torque",
@@ -409,7 +410,7 @@ local sets = {
 	TrickAttack = {Hands = "Rog. Armlets +1"},
 	Hide = {},
 	Steal = {
-		Head = "Rogue's Bonnet",
+		Head = "Rog. Bonnet +1",
 		Hands = "Thief's Kote",
 		Legs = "Assassin's Culottes",
 		Feet = "Rogue's Poulaines"
@@ -430,9 +431,9 @@ local sets = {
 
 sets.Idle = gFunc.Combine(sets.Idle, sets.MovementSpeed);
 sets.Midcast = gFunc.Combine(sets.Evasion, sets.Midcast);
-sets.Mug = gFunc.Combine(sets.EnmityUp, sets.Mug);
 sets.Hide = gFunc.Combine(sets.EnmityUp, sets.Hide);
 sets.Bully = gFunc.Combine(sets.EnmityUp, sets.TH);
+sets.Mug = gFunc.Combine(gFunc.Combine(sets.EnmityUp, sets.TH), sets.Mug);
 
 local profile = {};
 profile.Sets = sets;
@@ -595,13 +596,6 @@ profile.HandleDefault = function()
 		else --Idle
 			if (varhelper.GetCycle("Mode") == "Base") then
 				gFunc.EquipSet(sets.Idle);
-				
-				helpers.DucalAketonCheck(environment);
-					
-				--Movement speed Override
-				if (player.IsMoving) then
-					gFunc.EquipSet(sets.MovementSpeed);
-				end
 					
 				--Lockable Override
 				if (varhelper.GetCycle("Lockable") == "Idle") then
@@ -609,6 +603,13 @@ profile.HandleDefault = function()
 				end
 			else
 				gFunc.EquipSet(varhelper.GetCycle("Mode"));
+			end
+
+			helpers.DucalAketonCheck(environment);
+
+			--Movement speed Override
+			if (player.IsMoving) then
+				gFunc.EquipSet(sets.MovementSpeed);
 			end
 		end
 	end
