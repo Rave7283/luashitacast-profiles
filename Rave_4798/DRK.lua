@@ -111,6 +111,20 @@ local sets = {
         Legs = "Dusk Trousers +1",
         Feet = "Hct. Leggings +1"
 	},
+	ShieldBreak = {
+        Head = "Optical Hat",
+        Neck = "Peacock Amulet",
+        Ear1 = "Merman's Earring",
+        Ear2 = "Brutal Earring",
+        Body = "Homam Corazza",
+        Hands = "Homam Manopolas",
+        Ring1 = "Rajas Ring",
+        Ring2 = "Toreador's Ring",
+        Back = "Forager's Mantle",
+        Waist = "Life Belt",
+        Legs = "Homam Cosciales",
+        Feet = "Homam Gambieras",
+	},
 	Preshot = {},
 	Midshot = {},
 	Precast = {
@@ -124,7 +138,7 @@ local sets = {
 	Endcast = {
 		Head = "Homam Zucchetto",
 		Ear1 = "Loquac. Earring",
-		Hands = "Homam Manopolas",
+		Hands = "Dusk Gloves +1",
 		Waist = "Sonic Belt",
 		Legs = "Homam Cosciales",
 		Feet = "Homam Gambieras"
@@ -457,6 +471,10 @@ profile.HandleWeaponskill = function()
 		gFunc.EquipSet(sets["WS_" .. varhelper.GetCycle("Priority")]);
 	end
 	
+	if (ws.Name == "Shield Break") then
+		gFunc.EquipSet(sets.ShieldBreak);
+	end
+
 	--Gorgets
 	gFunc.Equip("neck", common.ElementalGorgetTable[ws.Name]);
 end
