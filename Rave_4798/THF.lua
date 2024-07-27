@@ -21,6 +21,9 @@ local sets = {
 		Legs = "Raven Hose",
 		Feet = "Dance Shoes +1"
 	},
+	IdleEva = {
+		Head = "Rog. Bonnet +1"
+	},
 	Resting = {},
 	Engaged_Hybrid = {
 		Head = "Homam Zucchetto",
@@ -376,6 +379,9 @@ local sets = {
 		Legs = "Homam Cosciales",
 		Feet = "Homam Gambieras"
 	},
+	Endcast_ConserveMP = {
+		Ear1 = "Magnetic Earring"
+	},
 	Evasion = {
 		Head = "Optical Hat",
 		Neck = "Evasion Torque",
@@ -603,6 +609,10 @@ profile.HandleDefault = function()
 				end
 			else
 				gFunc.EquipSet(varhelper.GetCycle("Mode"));
+
+				if (varhelper.GetCycle("Mode") == "Evasion") then
+					gFunc.EquipSet(sets.IdleEva);
+				end
 			end
 
 			helpers.DucalAketonCheck(environment);
@@ -659,8 +669,14 @@ profile.HandlePrecast = function()
 end
 
 profile.HandleMidcast = function()
+	local spell = gData.GetAction();
+
 	gFunc.InterimEquipSet(sets.Midcast);
 	gFunc.EquipSet(sets.Endcast);
+
+	if (spell.MpCost ~= nil and spell.MpCost > 0) then
+		gFunc.EquipSet(sets.Endcast_ConserveMP);
+	end
 end
 
 profile.HandlePreshot = function()
