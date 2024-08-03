@@ -84,6 +84,7 @@ helpers.AccBoostWeaponSkills = {
 	["Wasp String"] = true,
 	["Shadowstitch"] = true,
 	["Mandalic Stab"] = true,
+	["Mercy Stroke"] = true,
 	--Polearm
 	["Leg Sweep"] = true,
 	["Vorpal Thrust"] = true,
@@ -108,7 +109,17 @@ helpers.AccBoostWeaponSkills = {
 	--Scythe
 	["Spiral Hell"] = true,
 	["Catastrophe"] = true,
-	["Quietus"] = true
+	["Quietus"] = true,
+	--Great Axe
+	["Shield Break"] = true,
+	["Iron Tempest"] = true,
+	["Armor Break"] = true,
+	["Keen Edge"] = true,
+	["Weapon Break"] = true,
+	["Full Break"] = true,
+	["Steel Cyclone"] = true,
+	["Metatron Torment"] = true,
+	["Fell Cleave"] = true
 };
 helpers.LockableEquipment = {
     ["Main"] = T{"Warp Cudgel", "Kgd. Signet Staff", "Fed. Signet Staff", "Treat Staff II", "Trick Staff II"},
