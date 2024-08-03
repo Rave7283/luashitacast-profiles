@@ -135,7 +135,7 @@ helpers.LockableEquipment = {
     ["Ring1"] = T{"Anniversary Ring", "Emperor Band", "Chariot Band", "Empress Band", "Homing Ring", "Tavnazian Ring", "Albatross Ring", "Dem Ring", "Holla Ring", "Mea Ring", "Altep Ring", "Yhoat Ring"},
     ["Ring2"] = T{"Anniversary Ring", "Emperor Band", "Chariot Band", "Empress Band", "Homing Ring", "Tavnazian Ring", "Albatross Ring", "Dem Ring", "Holla Ring", "Mea Ring", "Altep Ring", "Yhoat Ring"},
     ["Back"] = T{},
-    ["Waist"] = T{"Mandragora Belt"},
+    ["Waist"] = T{"Mandragora Belt", "Rabbit Belt", "Gyokuto Obi"},
     ["Legs"] = T{"Worker Hose","Angler's Hose", "Hume Trunks +1"},
     ["Feet"] = T{"Worker Boots","Powder Boots","Dream Boots +1","Angler's Boots","Waders"}
 };
