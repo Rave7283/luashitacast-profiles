@@ -59,6 +59,7 @@ local sets = {
 	Midcast = {
 		Main = "Eremite's Wand", --25 SIRD
 		Sub = "Genbu's Shield", --10 PDT
+		Head = "Nashira Turban", --10 SIRD
 		Ear2 = "Magnetic Earring", -- 8 SIRD
 		Neck = "Willpower Torque", --5 SIRD
 		Waist = "Sorcerer's Belt", --8 SIRD
@@ -109,25 +110,43 @@ local sets = {
         Legs = "Mahatma Slops",
         Feet = "Nashira Crackows"
 	},
-	Endcast_ElementalDebuff = {
-        Ammo = "Phtm. Tathlum",
-        Head = "Src. Petasos +1",
-        Neck = "Elemental Torque",
-        Ear1 = "Loquac. Earring",
+	Endcast_ElementalDebuff_Power = {
+        Main = "Kirin's Pole",
+		Ammo = "Phtm. Tathlum",
+        Head = "Maat's Cap",
+        Neck = "Prudence Torque",
+        Ear1 = "Phtm. Earring +1",
         Ear2 = "Phtm. Earring +1",
         Body = "Mahatma Hpl.",
         Hands = "Wzd. Gloves +1",
         Ring1 = "Snow Ring",
         Ring2 = "Snow Ring",
-        Back = "Merciful Cape",
+        Back = "Prism Cape",
         Waist = "Sorcerer's Belt",
         Legs = "Mahatma Slops",
-        Feet = "Nashira Crackows"
+        Feet = "Src. Sabots +1"
+	},
+	Endcast_ElementalDebuff_Acc = {
+        Main = "Kirin's Pole",
+		Ammo = "Phtm. Tathlum",
+        Head = "Maat's Cap",
+        Neck = "Prudence Torque",
+        Ear1 = "Phtm. Earring +1",
+        Ear2 = "Phtm. Earring +1",
+        Body = "Mahatma Hpl.",
+        Hands = "Wzd. Gloves +1",
+        Ring1 = "Snow Ring",
+        Ring2 = "Snow Ring",
+        Back = "Prism Cape",
+        Waist = "Sorcerer's Belt",
+        Legs = "Mahatma Slops",
+        Feet = "Src. Sabots +1"
 	},
 	Endcast_Dark = {
 		Ammo = "Phtm. Tathlum",
-        Head = "Zenith Crown +1",
+        Head = "Nashira Turban",
         Neck = "Dark Torque",
+		Ear1 = "Loquac. Earring",
         Ear2 = "Phtm. Earring +1",
         Body = "Mahatma Hpl.",
         Hands = "Src. Gloves +1",
@@ -140,13 +159,14 @@ local sets = {
 	},
 	Endcast_Drain = {
 		Ammo = "Phtm. Tathlum",
-        Head = "Maat's Cap",
+        Head = "Nashira Turban",
         Neck = "Dark Torque",
+		Ear1 = "Loquac. Earring",
         Ear2 = "Phtm. Earring +1",
         Body = "Mahatma Hpl.",
         Hands = "Src. Gloves +1",
         Ring1 = "Snow Ring",
-        Ring2 = "Snow Ring",
+        Ring2 = "Overlord's Ring",
         Back = "Merciful Cape",
         Waist = "Swift Belt",
         Legs = "Wizard's Tonban",
@@ -154,13 +174,14 @@ local sets = {
 	},
 	Endcast_Aspir = {
 		Ammo = "Phtm. Tathlum",
-        Head = "Zenith Crown +1",
+        Head = "Nashira Turban",
         Neck = "Dark Torque",
+		Ear1 = "Loquac. Earring",
         Ear2 = "Phtm. Earring +1",
         Body = "Mahatma Hpl.",
         Hands = "Src. Gloves +1",
         Ring1 = "Serket Ring",
-        Ring2 = "Snow Ring",
+        Ring2 = "Overlord's Ring",
         Back = "Merciful Cape",
         Waist = "Swift Belt",
         Legs = "Wizard's Tonban",
@@ -172,7 +193,7 @@ local sets = {
         Body = "Wzd. Coat +1",
 		Hands = "Nashira Gages",
         Back = "Altruistic Cape",
-        Legs = "Mahatma Slops",
+        Legs = "Nashira Seraweels",
         Feet = "Rostrum Pumps"
 	},
 	Endcast_EnfeeblingMnd = {
@@ -180,6 +201,7 @@ local sets = {
         Ring2 = "Thunder Ring",
 	},
 	Endcast_EnfeeblingInt = {
+		Ear1 = "Phtm. Earring +1",
 		Ear2 = "Phtm. Earring +1",
 		Ring1 = "Snow Ring",
         Ring2 = "Snow Ring",
@@ -187,11 +209,19 @@ local sets = {
 	},
 	Endcast_Healing = {
 		Main = "Apollo's Staff",
-		Ear2 = "Novia Earring"
+		Head = "Nashira Turban",
+		Ear2 = "Novia Earring",
+		Body = "Wzd. Coat +1",
+		Hands = "Hydra Gloves",
+		Ring1 = "Serket Ring",
+		Back = "Altruistic Cape",
+        Waist = "Swift Belt",
+        Legs = "Mahatma Slops",
+        Feet = "Hydra Gaiters"
 	},
 	Endcast_ConserveMP = {
-		Ear2="Magnetic Earring", 
-		Feet="Src. Sabots +1"
+		Ear2 = "Magnetic Earring", 
+		Feet = "Src. Sabots +1"
 	},
 	Endcast_Stoneskin = {
 		Main = "Kirin's Pole",
@@ -212,6 +242,13 @@ local sets = {
 	Ring = {Ring2 = "Sorcerer's Ring"},
 	DayMatch = {Legs = "Sorcerer's Tonban"},
 	MagicBurst = {Hands = "Src. Gloves +1"},
+	EnmityNuke = {
+		Head = "Src. Petasos +1", --3
+		Ear1 = "Novia Earring", --7
+		Hands = "Wzd. Gloves +1", --2
+        Legs = "Mahatma Slops", --4
+        Feet = "Src. Sabots +1" --2
+	},
 	FirstNuke1 = {Ammo = "Hedgehog Bomb", Head = "Zenith Crown +1", Ring1 = "Serket Ring"},
 	FirstNuke2 = {Head = "Zenith Crown +1", Ammo = "Hedgehog Bomb"},
 	FirstNuke3 = {Head = "Zenith Crown +1"},
@@ -246,9 +283,15 @@ profile.OnLoad = function()
 	AshitaCore:GetChatManager():QueueCommand(-1, "/alias /fn /lac fwd fn");
 	AshitaCore:GetChatManager():QueueCommand(-1, "/bind != /lac fwd fn");
 	
+	--DOT Acc binds
+	AshitaCore:GetChatManager():QueueCommand(-1, "/alias /dotacc /lac fwd dotacc");
+    
 	--Midcast binds
 	AshitaCore:GetChatManager():QueueCommand(-1, "/alias /mc /lac fwd mc");
 	
+	--Enmity binds
+	AshitaCore:GetChatManager():QueueCommand(-1, "/alias /enmity /lac fwd enmity");
+
 	--Stun binds
 	AshitaCore:GetChatManager():QueueCommand(-1, "/bind !` /ma \"Stun\" <t>");
 	
@@ -260,6 +303,8 @@ profile.OnLoad = function()
 	varhelper.CreateCycle("Lockable", { [1] = "Idle", [2] = "Always", [3] = "Never" });
 	varhelper.CreateCycle("Nuke Mode", { [1] = "Power", [2] = "Hybrid", [3] = "Acc" });
 	varhelper.CreateToggle("Force HP", true);
+	varhelper.CreateToggle("DOT Acc", false);
+	varhelper.CreateToggle("Enmity", false);
 	varhelper.CreateToggle("MB", false);
 	varhelper.CreateToggle("FN", true);
 	varhelper.CreateToggle("MC", true);
@@ -295,6 +340,12 @@ profile.OnUnload = function()
 	--Delay Midcast unbinds
 	AshitaCore:GetChatManager():QueueCommand(-1, "/alias delete /mc");
 	
+	--DOT Acc unbinds
+	AshitaCore:GetChatManager():QueueCommand(-1, "/alias delete /dotacc");
+
+	--Enmity binds
+	AshitaCore:GetChatManager():QueueCommand(-1, "/alias delete /enmity");
+
 	--Stun unbind
 	AshitaCore:GetChatManager():QueueCommand(-1, "/unbind !`");
 	
@@ -322,6 +373,10 @@ profile.HandleCommand = function(args)
 		varhelper.AdvanceToggle("FN");
 	elseif (args[1] == "mc") then
 		varhelper.AdvanceToggle("MC");
+	elseif (args[1] == "dotacc") then
+		varhelper.AdvanceToggle("DOT Acc");
+	elseif (args[1] == "enmity") then
+		varhelper.AdvanceToggle("Enmity");	
 	else 
 		helpers.ExecuteCommand(args[1]);
 	end
@@ -398,7 +453,11 @@ profile.HandleMidcast = function()
 		
 		--Ele DOTs
 		if (helpers.ElementalDebuffs:contains(spell.Name)) then
-			gFunc.EquipSet(sets.Endcast_ElementalDebuff);
+			if (varhelper.GetToggle("DOT Acc")) then
+				gFunc.EquipSet(sets.Endcast_ElementalDebuff_Acc);
+			else
+				gFunc.EquipSet(sets.Endcast_ElementalDebuff_Power);
+			end	
 		--Nukes
 		else
 			--Always nuke in max power setup when ES is active
@@ -432,6 +491,10 @@ profile.HandleMidcast = function()
 				elseif (player.MP >= settings.FirstNukeThreshold3) then
 					gFunc.EquipSet(sets.FirstNuke3);
 				end
+			end
+			--Enmity Mode
+			if (varhelper.GetToggle("Enmity")) then
+				gFunc.EquipSet(sets.EnmityNuke);
 			end	
 			--Magic Burst Mode
 			if (varhelper.GetToggle("MB")) then
@@ -478,8 +541,14 @@ profile.HandleMidcast = function()
 	elseif (spell.Skill == "Enhancing Magic") then
 		gFunc.ForceEquipSet(sets.MpBuffer);
 
-		if spell.Name == "Stoneskin" then
+		if (spell.Name == "Stoneskin") then
 			gFunc.EquipSet(sets.Endcast_Stoneskin);
+		elseif (spell.Name == "Sneak") then
+			gFunc.EquipSet(sets.Endcast_ConserveMP);
+			gFunc.EquipSet(common.sets.Sneak)
+		elseif (spell.Name == "Invisible") then
+			gFunc.EquipSet(sets.Endcast_ConserveMP);
+			gFunc.EquipSet(common.sets.Invisible)
 		else 
 			gFunc.EquipSet(sets.Endcast_ConserveMP);
 		end

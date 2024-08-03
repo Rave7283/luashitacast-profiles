@@ -143,8 +143,14 @@ common.sets = T{
 		Head = "Chef's Hat", 
 		Body = "Culinarian's Apron"
 	},
-	Sneak = {Feet = "Dream Boots +1"},
-	Invisible = {Hands = "Dream Mittens +1"},
+	Sneak = {
+		Back = "Skulker's Cape",
+		Feet = "Dream Boots +1"
+	},
+	Invisible = {
+		Hands = "Dream Mittens +1",
+		Back = "Skulker's Cape"
+	},
 	Pendant = {Neck = "Uggalepih Pendant"}
 };
 

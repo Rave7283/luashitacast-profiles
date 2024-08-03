@@ -417,9 +417,16 @@ local sets = {
 	Hide = {},
 	Steal = {
 		Head = "Rog. Bonnet +1",
-		Hands = "Thief's Kote",
-		Legs = "Assassin's Culottes",
-		Feet = "Rogue's Poulaines"
+        Neck = "Jeweled Collar +1", --Make sure evasion torque isn't on
+        Ear1 = "Cassie Earring",
+        Body = "Homam Corazza",
+        Hands = "Thief's Kote",
+        Ring1 = "Bomb Queen Ring",
+        Ring2 = "Rogue's Ring",
+        Back = "Gigant Mantle",
+        Waist = "Ocean Sash",
+        Legs = "Assassin's Culottes",
+        Feet = "Rogue's Poulaines"
 	},
 	Mug = {},
     TH = {
@@ -432,11 +439,14 @@ local sets = {
 		Waist = "Warwolf Belt",
 		Legs = "Assassin's Culottes"
 	},
+	HpDown = {
+	},
 	MovementSpeed = {Feet = "Trotter Boots"}
 };
 
 sets.Idle = gFunc.Combine(sets.Idle, sets.MovementSpeed);
 sets.Midcast = gFunc.Combine(sets.Evasion, sets.Midcast);
+sets.PDT = gFunc.Combine(sets.Evasion, sets.PDT)
 sets.Hide = gFunc.Combine(sets.EnmityUp, sets.Hide);
 sets.Bully = gFunc.Combine(sets.EnmityUp, sets.TH);
 sets.Mug = gFunc.Combine(gFunc.Combine(sets.EnmityUp, sets.TH), sets.Mug);
@@ -635,6 +645,7 @@ profile.HandleAbility = function()
 	elseif (ability.Name == "Hide") then
 		gFunc.EquipSet(sets.Hide);
 	elseif (ability.Name == "Steal") then
+		gFunc.ForceEquipSet(sets.HPDown);
 		gFunc.EquipSet(sets.Steal);
 	elseif (ability.Name == "Mug") then
 		gFunc.EquipSet(sets.Mug);

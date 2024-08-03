@@ -308,8 +308,14 @@ profile.HandleMidcast = function()
 		end
 	--Enhancing Magic
 	elseif (spell.Skill == "Enhancing Magic") then
-		if spell.Name == "Stoneskin" then
+		if (spell.Name == "Stoneskin") then
 			gFunc.EquipSet(sets.Endcast_Stoneskin);
+		elseif (spell.Name == "Sneak") then
+			gFunc.EquipSet(sets.Endcast_ConserveMP);
+			gFunc.EquipSet(common.sets.Sneak)
+		elseif (spell.Name == "Invisible") then
+			gFunc.EquipSet(sets.Endcast_ConserveMP);
+			gFunc.EquipSet(common.sets.Invisible)
 		else 
 			gFunc.EquipSet(sets.Endcast_ConserveMP);
 		end
