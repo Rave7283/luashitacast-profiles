@@ -5,7 +5,7 @@ local common = gFunc.LoadFile('common/common.lua');
 local settings = {
 	SongPrecastSetHp = 1324,
 	GearFastCast = 0.04;
-	GearSongFastCast = 0.29;
+	GearSongFastCast = 0.41;
 };
 
 local instrumentTable = {
@@ -153,6 +153,10 @@ local sets = {
 		Waist = "Scouter's Rope"
 	},
 	Ring = {Ring1 = "Minstrel's Ring"},
+	Refresh = {
+		Head = "displaced",
+        Body = "Royal Cloak"
+	},
 	LockStyle = {}
 };
 
@@ -302,6 +306,11 @@ profile.HandleDefault = function()
 			if (varhelper.GetCycle("Mode") == "Base") then
 				gFunc.EquipSet(sets.Idle);
 				
+				--Idle Refresh
+				if (varhelper.GetToggle("Refresh")) then
+					gFunc.EquipSet(sets.Refresh);
+				end
+
 				helpers.DucalAketonCheck(environment);
 				
 				--Lockable Override
