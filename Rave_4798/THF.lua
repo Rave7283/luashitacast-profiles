@@ -497,7 +497,7 @@ profile.OnLoad = function()
     AshitaCore:GetChatManager():QueueCommand(1, "/macro set 1");
 	
 	--tCrossbar
-	AshitaCore:GetChatManager():QueueCommand(1, "/addon load tcrossbar");
+	AshitaCore:GetChatManager():QueueCommand(-1, "/addon load tcrossbar");
 end
 
 profile.OnUnload = function()

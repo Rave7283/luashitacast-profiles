@@ -198,7 +198,7 @@ common.sets = T{
 	},
 	Pendant = {Neck = "Uggalepih Pendant"},
 	Blink = {
-		Head = "Charity Cap"
+		Body = "Ducal Aketon"
 	}
 };
 

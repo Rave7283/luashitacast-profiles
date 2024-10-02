@@ -4,20 +4,21 @@ local common = gFunc.LoadFile("common/common.lua");
 
 local settings = {
 	GearFastCast = 0.04;
+	GearSummoningFastCast = 0.04;
 };
 
 local sets = {
 	Idle = {
 		Main = "Terra's Staff",
 		Ammo = "Hedgehog Bomb",
-		Head = "Zenith Crown +1",
+		Head = "Summoner's Horn",
         Neck = "Jeweled Collar +1",
-        Ear1 = "Loquac. Earring",
-		Ear2 = "Magnetic Earring",
+        Ear1 = "Merman's Earring",
+		Ear2 = "Merman's Earring",
         Body = "Yinyang Robe",
         Hands = "Smn. Bracers +1",
-        Ring1 = "Evoker's Ring",
-		Ring2 = "Serket Ring",
+        Ring1 = "Merman's Ring",
+		Ring2 = "Merman's Ring",
         Back = "Umbra Cape",
         Waist = "Hierarch Belt",
         Legs = "Evk. Spats +1",
@@ -31,6 +32,9 @@ local sets = {
 		Ear2 = "Magnetic Earring",
 		Body = "Mahatma Hpl.",
 		Hands = "Hydra Gloves",
+		Ring1 = "Evoker's Ring",
+		Ring2 = "Serket Ring",
+		Back = "Astute Cape",
 		Waist = "Hierarch Belt",
 		Legs = "Baron's Slops",
 		Feet = "Hydra Gaiters"

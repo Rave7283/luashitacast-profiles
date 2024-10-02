@@ -8,11 +8,24 @@ local settings = {
 
 local sets = {
 	Idle = {
+		Head = "Darksteel Cap +1",
 		Neck = "Parade Gorget",
-		Hands = "Homam Manopolas",
-		Legs = "Blood Cuisses"
+		Ear1 = "Merman's Earring",
+		Ear2 = "Merman's Earring",
+		Body = "Dst. Harness +1",
+		Hands = "Dst. Mittens +1",
+		Ring1 = "Merman's Ring",
+		Ring2 = "Merman's Ring",
+		Back = "Boxer's Mantle",
+		Waist = "Ocean Sash",
+		Legs = "Blood Cuisses",
+		Feet = "Dst. Leggings +1"
 	},
-	Resting = {},
+	Resting = {
+		Neck = "Parade Gorget",
+		Ear1 = "Relaxing Earring",
+		Waist = "Hierarch Belt"
+	},
 	Engaged_Hybrid = {
 		Head = "Homam Zucchetto",
 		Neck = "Peacock Amulet",
@@ -213,13 +226,13 @@ local sets = {
 		Head = "Homam Zucchetto",
 		Neck = "Evasion Torque",
 		Ear1 = "Cassie Earring",
-		Ear2 = "Brutal Earring",
+		Ear2 = "Novia Earring",
 		Body = "Gloom Breastplate",
 		Hands = "Dusk Gloves +1",
 		Ring1 = "Bomb Queen Ring",
 		Ring2 = "Toreador's Ring",
 		Back = "Gigant Mantle",
-		Waist = "Ocean Sash",
+		Waist = "Sonic Belt",
 		Legs = "Homam Cosciales",
 		Feet = "Homam Gambieras" 
 	}

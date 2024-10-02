@@ -21,6 +21,7 @@ local sets = {
 		Neck = "Jeweled Collar +1",
 		Ear1 = "Merman's Earring",
 		Ear2 = "Merman's Earring",
+		Hands = "Homam Manopolas",
 		Ring1 = "Merman's Ring",  
 		Ring2 = "Merman's Ring",
 		Back = "Boxer's Mantle",
