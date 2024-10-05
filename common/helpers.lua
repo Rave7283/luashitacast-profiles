@@ -158,7 +158,7 @@ helpers.UnlockedSlots = {
     ["Feet"] = true
 }
 
-helpers.restTimer = 0;
+helpers.delayTimer = 0;
 
 --Functions------------------------------------------------------------
 function helpers.GetMidcastDelay(player, spell, fastCastValue)
@@ -285,7 +285,7 @@ function helpers.DayCheck(environment, element)
 	return affinity;
 end
 
---Returns true if spell element matches weather or day, and is a valid Obi spells
+--Returns true if spell element matches weather or day
 function helpers.ObiCheck(environment, element)
 	local affinity = 0;
 	
@@ -312,19 +312,20 @@ function helpers.TimeCheck(environment, dayPhase)
 	end
 end
 
---Delays swapping off refresh/regen gear for hmp gear for first tick
-function helpers.RestingHelper(isResting, restingSet)
-	if (isResting) then
-		if helpers.restTimer == 0 then
-			helpers.restTimer = os.clock() + 18;
-		end
-		
-		if (os.clock() > helpers.restTimer) then
-			gFunc.EquipSet(restingSet);
-		end
-	else
-		helpers.restTimer = 0;
+--Delays swapping to a gear set for a certain number of seconds
+function helpers.DelaySet(set, delay)
+	if helpers.delayTimer == 0 then
+		helpers.delayTimer = os.clock() + delay;
 	end
+	
+	if (os.clock() > helpers.delayTimer) then
+		gFunc.EquipSet(set);
+		helpers.delayTimer = 0;
+	end
+end
+
+function helpers.ResetDelay()
+	helpers.delayTimer = 0;
 end
 
 --Equips a city Aketon if in a valid zone
@@ -349,6 +350,12 @@ end
 function helpers.CreateUniversalBinds()
 	--HandleDefault triggers after any call to HandleCommand
 	AshitaCore:GetChatManager():QueueCommand(-1, "/alias /hd /lac fwd hd");
+end
+
+--Destroys universal binds
+function helpers.DestroyUniversalBinds()
+	--HandleDefault
+	AshitaCore:GetChatManager():QueueCommand(-1, "/alias delete /hd");
 end
 
 --Handles universal binds
@@ -376,12 +383,6 @@ function helpers.ExecuteCommand(command)
 		gFunc.Enable("Legs", false);
 		gFunc.ForceEquipSet(common.sets.Logging);
 	end
-end
-
---Destroys universal binds
-function helpers.DestroyUniversalBinds()
-	--HandleDefault
-	AshitaCore:GetChatManager():QueueCommand(-1, "/alias delete /hd");
 end
 
 return helpers

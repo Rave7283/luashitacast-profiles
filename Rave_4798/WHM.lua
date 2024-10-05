@@ -201,9 +201,9 @@ profile.HandleDefault = function()
 	
 	if (player.Status == "Resting") then
 		--Wait 18 before swapping to rest set
-		helpers.RestingHelper(true, sets.Resting);
+		helpers.DelaySet(sets.Resting, 18);
 	else
-		helpers.RestingHelper(false, sets.Resting);
+		helpers.ResetDelay();
 	
 		if (player.Status == "Engaged") then
 			gFunc.EquipSet(sets.Engaged);		

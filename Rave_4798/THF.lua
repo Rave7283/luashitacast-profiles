@@ -354,7 +354,7 @@ local sets = {
         Ear2 = "Phtm. Earring +1",
         Body = "Dragon Harness",
         Ring1 = "Snow Ring",
-        Ring2 = "Snow Ring",
+        Ring2 = "Omniscient Ring",
         Back = "Amemet Mantle +1",
         Waist = "R.K. Belt +2",
         Legs = "Dusk Trousers +1",
@@ -593,9 +593,9 @@ profile.HandleDefault = function()
 	--Resting
 	if (player.Status == "Resting") then
 		--Wait 18 before swapping to rest set
-		helpers.RestingHelper(true, sets.Resting);
+		helpers.DelaySet(sets.Resting, 18);
 	else
-		helpers.RestingHelper(false, sets.Resting);
+		helpers.ResetDelay();
 		--Engaged
 		if (player.Status == "Engaged") then
 			if (sa == 1) and (ta == 1) then

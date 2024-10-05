@@ -346,9 +346,9 @@ profile.HandleDefault = function()
 	--Resting
 	if (player.Status == "Resting") then
 		--Wait 18 before swapping to rest set
-		helpers.RestingHelper(true, sets.Resting);
+		helpers.DelaySet(sets.Resting, 18);
 	else
-		helpers.RestingHelper(false, sets.Resting);
+		helpers.ResetDelay();
 		--Engaged
 		if (player.Status == "Engaged") then
 			if (varhelper.GetCycle("Mode") == "Base") then

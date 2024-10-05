@@ -128,17 +128,16 @@ local sets = {
         Feet = "Src. Sabots +1"
 	},
 	Endcast_ElementalDebuff_Acc = {
-        Main = "Kirin's Pole",
 		Ammo = "Phtm. Tathlum",
-        Head = "Maat's Cap",
-        Neck = "Prudence Torque",
+        Head = "Src. Petasos +1",
+        Neck = "Elemental Torque",
         Ear1 = "Phtm. Earring +1",
         Ear2 = "Phtm. Earring +1",
         Body = "Mahatma Hpl.",
         Hands = "Wzd. Gloves +1",
         Ring1 = "Snow Ring",
         Ring2 = "Omniscient Ring",
-        Back = "Prism Cape",
+        Back = "Merciful Cape",
         Waist = "Sorcerer's Belt",
         Legs = "Mahatma Slops",
         Feet = "Src. Sabots +1"
@@ -410,9 +409,9 @@ profile.HandleDefault = function()
 	
 	if (player.Status == "Resting") then
 		--Wait 18 before swapping to rest set
-		helpers.RestingHelper(true, sets.Resting);
+		helpers.DelaySet(sets.Resting, 18);
 	else
-		helpers.RestingHelper(false, sets.Resting);
+		helpers.ResetDelay();
 	
 		if (player.Status == "Engaged") then
 			gFunc.EquipSet(sets.Engaged);		
