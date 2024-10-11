@@ -3,10 +3,21 @@ local helpers = gFunc.LoadFile("common/helpers.lua");
 local common = gFunc.LoadFile("common/common.lua"); 
 
 local settings = {
-	NukeSetHp = 998,
-	NukeSetMp = 810,
-	GearFastCast = 0.04;
+	NukeSetHp = 942,
+	NukeSetMp = 751,
+	GearFastCast = 0.04,
+	HpOffset = {
+		["WHM"] = 38,
+		["RDM"] = 56,
+		["DRG"] = 79,
+		["NIN"] = 56
+	},
+	MpOffset = {
+		["WHM"] = 78,
+		["RDM"] = 59
+	}
 };
+
 settings.FirstNukeThreshold3 = settings.NukeSetMp + 55
 settings.FirstNukeThreshold2 = settings.FirstNukeThreshold3 + 20;
 settings.FirstNukeThreshold1 = settings.FirstNukeThreshold2 + 50;
@@ -25,7 +36,7 @@ local sets = {
 		Ring2 = "Merman's Ring",
         Back = "Umbra Cape",
         Waist = "Hierarch Belt",
-        Legs = "Wzd. Tonban +1",
+        Legs = "Src. Tonban +1",
         Feet = "Src. Sabots +1"
 	},
 	Resting = {
@@ -46,6 +57,8 @@ local sets = {
 	Engaged = {},
 	Precast = {
 		Ear1 = "Loquac. Earring",
+		Ring1 = "Serket Ring",
+		Back = "Gigant Mantle",
 		Feet = "Rostrum Pumps"
 	},
 	Precast_ForceHP = {
@@ -63,10 +76,11 @@ local sets = {
 		Head = "Nashira Turban", --10 SIRD
 		Neck = "Willpower Torque", --5 SIRD
 		Ear2 = "Magnetic Earring", -- 8 SIRD
+		Back = "Umbra Cape", -- 6/12 PDT
 		Waist = "Sorcerer's Belt", --8 SIRD
 		Feet = "Wizard's Sabots" --20 SIRD
 	},
-	Endcast_Power = {
+	Endcast_Nuke_Power = {
         Ammo = "Phtm. Tathlum",
         Head = "Maat's Cap",
         Neck = "Prudence Torque",
@@ -81,10 +95,10 @@ local sets = {
         Legs = "Mahatma Slops",
         Feet = "Src. Sabots +1"
 	},
-	Endcast_Hybrid = {
+	Endcast_Nuke_Acc = {
 		Ammo = "Phtm. Tathlum",
-        Head = "Maat's Cap",
-        Neck = "Elemental Torque",
+        Head = "Src. Petasos +1",
+        Neck = "Prudence Torque",
         Ear1 = "Moldavite Earring",
         Ear2 = "Novio Earring",
         Body = "Genie Weskit",
@@ -96,20 +110,20 @@ local sets = {
         Legs = "Mahatma Slops",
         Feet = "Src. Sabots +1"
 	},
-	Endcast_Acc = {
-		Ammo = "Phtm. Tathlum",
-        Head = "Src. Petasos +1",
-        Neck = "Elemental Torque",
-        Ear1 = "Moldavite Earring",
-        Ear2 = "Novio Earring",
-        Body = "Genie Weskit",
-        Hands = "Wzd. Gloves +1",
-        Ring1 = "Snow Ring",
+	Endcast_Nuke_Enmity = {
+		Ammo = "Hedgehog Bomb", --1
+		Head = "Src. Petasos +1", --3
+		Neck = "Prudence Torque",
+		Ear1 = "Novia Earring", --7
+		Ear2 = "Novio Earring",
+		Body = "Mahatma Hpl.", --4
+		Hands = "Wzd. Gloves +1", --2
+		Ring1 = "Snow Ring",
         Ring2 = "Omniscient Ring",
-        Back = "Merciful Cape",
+		Back = "Prism Cape",
         Waist = "Sorcerer's Belt",
-        Legs = "Mahatma Slops",
-        Feet = "Nashira Crackows"
+        Legs = "Mahatma Slops", --4
+        Feet = "Src. Sabots +1" --2
 	},
 	Endcast_ElementalDebuff_Power = {
         Main = "Kirin's Pole",
@@ -130,17 +144,17 @@ local sets = {
 	Endcast_ElementalDebuff_Acc = {
 		Ammo = "Phtm. Tathlum",
         Head = "Src. Petasos +1",
-        Neck = "Elemental Torque",
+        Neck = "Prudence Torque",
         Ear1 = "Phtm. Earring +1",
         Ear2 = "Phtm. Earring +1",
-        Body = "Mahatma Hpl.",
+        Body = "Genie Weskit",
         Hands = "Wzd. Gloves +1",
         Ring1 = "Snow Ring",
         Ring2 = "Omniscient Ring",
         Back = "Merciful Cape",
         Waist = "Sorcerer's Belt",
         Legs = "Mahatma Slops",
-        Feet = "Src. Sabots +1"
+        Feet = "Nashira Crackows"
 	},
 	Endcast_Dark = {
 		Ammo = "Phtm. Tathlum",
@@ -188,6 +202,7 @@ local sets = {
         Feet = "Rostrum Pumps"
 	},
 	Endcast_Enfeebling = {
+		Ammo = "Dream Sand",
 		Head = "Genie Tiara",
         Neck = "Enfeebling Torque",
         Body = "Wzd. Coat +1",
@@ -201,6 +216,7 @@ local sets = {
         Ring2 = "Thunder Ring",
 	},
 	Endcast_EnfeeblingInt = {
+		Ammo = "Phtm. Tathlum",
 		Ear1 = "Phtm. Earring +1",
 		Ear2 = "Phtm. Earring +1",
 		Ring1 = "Snow Ring",
@@ -209,6 +225,7 @@ local sets = {
 	},
 	Endcast_Healing = {
 		Main = "Apollo's Staff",
+		Ammo = "Dream Sand",
 		Head = "Nashira Turban",
 		Ear1 = "Loquac. Earring",
 		Ear2 = "Novia Earring",
@@ -221,12 +238,13 @@ local sets = {
         Feet = "Hydra Gaiters"
 	},
 	Endcast_ConserveMP = {
+		Ammo = "Dream Sand",
 		Head = "Nashira Turban",
 		Neck = "Uggalepih Pendant",
 		Ear1 = "Loquac. Earring",
 		Ear2 = "Magnetic Earring",
 		Body = "Nashira Manteel",
-		Hands = "Nashira Gages",
+		Hands = "Zenith Mitts",
 		Ring1 = "Serket Ring",
 		Back = "Merciful Cape",
 		Waist = "Swift Belt",
@@ -235,36 +253,32 @@ local sets = {
 	},
 	Endcast_Stoneskin = {
 		Main = "Kirin's Pole",
-		Ear1 = "Loquac. Earring",
-		Ear2 = "Magnetic Earring",
+		Ammo = "Dream Sand",
 		Head = "Zenith Crown +1",
 		Neck = "Stone Gorget",
+		Ear1 = "Loquac. Earring",
+		Ear2 = "Magnetic Earring",
         Body = "Mahatma Hpl.",
-		Ring1 = "Serket Ring",
+		Hands = "Devotee's Mitts",
+		Ring1 = "Aqua Ring",
 		Ring2 = "Aqua Ring",
 		Waist = "Swift Belt",
         Back = "Prism Cape",
-        Legs = "Mahatma Slops",
+        Legs = "Zenith Slacks",
         Feet = "Rostrum Pumps"
 	},
 	Preshot = {ammo = "Pebble"},
 	Midshot = {},
 	DiabolosPole = {Main = "Diabolos's Pole"},
 	Ring = {Ring2 = "Sorcerer's Ring"},
-	DayMatch = {Legs = "Sorcerer's Tonban"},
-	MagicBurst = {Hands = "Src. Gloves +1"},
-	EnmityNuke = {
-		Head = "Src. Petasos +1", --3
-		Ear1 = "Novia Earring", --7
-		Body = "Mahatma Hpl.", --4
-		Hands = "Wzd. Gloves +1", --2
-        Legs = "Mahatma Slops", --4
-        Feet = "Src. Sabots +1" --2
+	DayMatch = {Legs = "Src. Tonban +1"},
+	MagicBurst = {
+		Ammo = "Dream Sand",
+		Hands = "Src. Gloves +1"
 	},
 	FirstNuke1 = {Ammo = "Hedgehog Bomb", Head = "Zenith Crown +1", Ring1 = "Serket Ring"},
 	FirstNuke2 = {Head = "Zenith Crown +1", Ammo = "Hedgehog Bomb"},
-	FirstNuke3 = {Head = "Zenith Crown +1"},
-	MpBuffer = {Ring1 = "Serket Ring"}
+	FirstNuke3 = {Head = "Zenith Crown +1"}
 };
 sets.Endcast_EnfeeblingMnd = gFunc.Combine(sets.Endcast_Enfeebling,sets.Endcast_EnfeeblingMnd)
 sets.Endcast_EnfeeblingInt = gFunc.Combine(sets.Endcast_Enfeebling,sets.Endcast_EnfeeblingInt)
@@ -304,9 +318,6 @@ profile.OnLoad = function()
 	--Midcast binds
 	AshitaCore:GetChatManager():QueueCommand(-1, "/alias /mc /lac fwd mc");
 	
-	--Enmity binds
-	AshitaCore:GetChatManager():QueueCommand(-1, "/alias /enmity /lac fwd enmity");
-
 	--Stun binds
 	AshitaCore:GetChatManager():QueueCommand(-1, "/bind !` /ma \"Stun\" <t>");
 	
@@ -315,11 +326,10 @@ profile.OnLoad = function()
 	
 	--Variable Helpers
 	varhelper.Initialize();
-	varhelper.CreateCycle("Lockable", { [1] = "Idle", [2] = "Always", [3] = "Never" });
-	varhelper.CreateCycle("Nuke Mode", { [1] = "Power", [2] = "Hybrid", [3] = "Acc" });
+	varhelper.CreateCycle("Lockable", { [1] = "Idle", [2] = "Always", [3] = "Never" });	
+	varhelper.CreateCycle("Nuke Mode", { [1] = "Power", [2] = "Acc", [3] = "Enmity" });
 	varhelper.CreateToggle("Force HP", true);
 	varhelper.CreateToggle("DOT Acc", false);
-	varhelper.CreateToggle("Enmity", false);
 	varhelper.CreateToggle("MB", false);
 	varhelper.CreateToggle("FN", true);
 	varhelper.CreateToggle("MC", true);
@@ -358,9 +368,6 @@ profile.OnUnload = function()
 	--DOT Acc unbinds
 	AshitaCore:GetChatManager():QueueCommand(-1, "/alias delete /dotacc");
 
-	--Enmity binds
-	AshitaCore:GetChatManager():QueueCommand(-1, "/alias delete /enmity");
-
 	--Stun unbind
 	AshitaCore:GetChatManager():QueueCommand(-1, "/unbind !`");
 	
@@ -382,6 +389,9 @@ profile.HandleCommand = function(args)
 		varhelper.AdvanceCycle("Nuke Mode");
 	elseif (args[1] == "mb") then 
 		varhelper.AdvanceToggle("MB");
+		if (varhelper.GetToggle("MB")) then
+			gFunc.ForceEquipSet(sets.MagicBurst)
+		end
 	elseif (args[1] == "forcehp") then
 		varhelper.AdvanceToggle("Force HP");
 	elseif (args[1] == "fn") then
@@ -390,8 +400,6 @@ profile.HandleCommand = function(args)
 		varhelper.AdvanceToggle("MC");
 	elseif (args[1] == "dotacc") then
 		varhelper.AdvanceToggle("DOT Acc");
-	elseif (args[1] == "enmity") then
-		varhelper.AdvanceToggle("Enmity");	
 	else 
 		helpers.ExecuteCommand(args[1]);
 	end
@@ -476,11 +484,11 @@ profile.HandleMidcast = function()
 			end	
 		--Nukes
 		else
-			--Always nuke in max power setup when ES is active
-			if (gData.GetBuffCount("Elemental Seal") == 1) then
-				gFunc.EquipSet(sets.Endcast_Power);
+			--Override Acc to Power when ES is on
+			if (gData.GetBuffCount("Elemental Seal") == 1 and varhelper.GetCycle("Nuke Mode") == "Acc") then
+				gFunc.EquipSet(sets.Endcast_Nuke_Power);
 			else
-				gFunc.EquipSet("Endcast_" .. varhelper.GetCycle("Nuke Mode"));
+				gFunc.EquipSet("Endcast_Nuke_" .. varhelper.GetCycle("Nuke Mode"));
 			end
 			--Obi Check
 			if (helpers.ObiCheck(environment, spell.Element)) then
@@ -491,27 +499,23 @@ profile.HandleMidcast = function()
 				gFunc.EquipSet(sets.DayMatch);
 			end
 			--Ugg Pendant
-			if (helpers.UggPendantCheck(spell, settings.NukeSetMp * 0.50)) then
+			if (helpers.UggPendantCheck(spell, helpers.CalculateOffset(settings.NukeSetMp, settings.MpOffset, player.SubJob) * 0.50)) then
 				gFunc.EquipSet(common.sets.Pendant);
 			end
 			--Sorc Ring
-			if (helpers.RingCheck(player, settings.NukeSetHp * 0.76) or varhelper.GetToggle("Force HP")) then
+			if (helpers.RingCheck(player, helpers.CalculateOffset(settings.NukeSetHp, settings.HpOffset, player.SubJob) * 0.76) or varhelper.GetToggle("Force HP")) then
 				gFunc.EquipSet(sets.Ring);
 			end
 			--First Nuke 
 			if (varhelper.GetToggle("FN")) then
-				if (player.MP >= settings.FirstNukeThreshold1) then
+				if (player.MP >= helpers.CalculateOffset(settings.FirstNukeThreshold1, settings.MpOffset, player.SubJob)) then
 					gFunc.EquipSet(sets.FirstNuke1);
-				elseif (player.MP >= settings.FirstNukeThreshold2) then
+				elseif (player.MP >= helpers.CalculateOffset(settings.FirstNukeThreshold2, settings.MpOffset, player.SubJob)) then
 					gFunc.EquipSet(sets.FirstNuke2);
-				elseif (player.MP >= settings.FirstNukeThreshold3) then
+				elseif (player.MP >= helpers.CalculateOffset(settings.FirstNukeThreshold3, settings.MpOffset, player.SubJob)) then
 					gFunc.EquipSet(sets.FirstNuke3);
 				end
 			end
-			--Enmity Mode
-			if (varhelper.GetToggle("Enmity")) then
-				gFunc.EquipSet(sets.EnmityNuke);
-			end	
 			--Magic Burst Mode
 			if (varhelper.GetToggle("MB")) then
 				gFunc.EquipSet(sets.MagicBurst);
@@ -527,9 +531,8 @@ profile.HandleMidcast = function()
 			gFunc.EquipSet(sets.Endcast_Aspir);
 		else
 			gFunc.EquipSet(sets.Endcast_Dark);
-		end
-		
-		--Diabolos Check
+		end		
+		--Diabolos Pole Check
 		if ((spell.Name == "Drain" or spell.Name == "Aspir") and helpers.WeatherCheck(environment, spell.Element) > 0) then
 			gFunc.EquipSet(sets.DiabolosPole);
 		end
@@ -555,8 +558,6 @@ profile.HandleMidcast = function()
 		end
 	--Enhancing Magic
 	elseif (spell.Skill == "Enhancing Magic") then
-		gFunc.ForceEquipSet(sets.MpBuffer);
-
 		if (spell.Name == "Stoneskin") then
 			gFunc.EquipSet(sets.Endcast_Stoneskin);
 		elseif (spell.Name == "Sneak") then

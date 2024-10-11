@@ -239,7 +239,7 @@ end
 
 --Returns true if MP will be low enough to proc pendant at spell resolution
 function helpers.UggPendantCheck(spell, mpThreshold)
-	if (spell.MpAftercast <= mpThreshold) then
+	if (spell.MpAftercast < mpThreshold) then
         return true;
 	else
 		return false;
@@ -248,7 +248,7 @@ end
 
 --Returns true if HP and TP and below proper thresholds
 function helpers.RingCheck(player, hpThreshold)
-	if (player.HP <= hpThreshold and player.TP <= 1000) then
+	if (player.HP < hpThreshold and player.TP < 1000) then
 		return true;
 	else
 		return false;
@@ -326,6 +326,14 @@ end
 
 function helpers.ResetDelay()
 	helpers.delayTimer = 0;
+end
+
+function helpers.CalculateOffset(number, offsetTable, offsetKey)
+	if (offsetTable[offsetKey] ~= nil) then
+		return number + offsetTable[offsetKey];
+	else
+		return number
+	end
 end
 
 --Equips a city Aketon if in a valid zone
