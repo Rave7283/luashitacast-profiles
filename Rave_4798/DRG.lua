@@ -18,13 +18,16 @@ local healingBreathThresholdLookup = {
 
 local sets = {
 	Idle = {
+		Head = "Green Ribbon +1",
 		Neck = "Jeweled Collar +1",
 		Ear1 = "Merman's Earring",
 		Ear2 = "Merman's Earring",
+		Body = "Homam Corazza",
 		Hands = "Homam Manopolas",
 		Ring1 = "Merman's Ring",  
 		Ring2 = "Merman's Ring",
 		Back = "Boxer's Mantle",
+		Waist = "Ocean Sash",
 		Legs = "Blood Cuisses",
 		Feet = "Blood Greaves"
 	},
@@ -133,7 +136,7 @@ local sets = {
 		Feet = "Homam Gambieras" 
 	},
 	Precast = {
-		Head = "Drachen Armet",
+		Head = "Drn. Armet +1",
 		Ear1 = "Loquac. Earring",
 		Legs = "Homam Cosciales"
 	},
@@ -165,7 +168,7 @@ local sets = {
         Feet = "Blood Greaves"
 	},
 	AncientCircle = {Legs = "Drn. Brais +1"},
-	SpiritLink = {},
+	SpiritLink = {Head = "Drn. Armet +1"},
 	Jump = {
 		Head = "Maat's Cap",
         Neck = "Love Torque",
@@ -195,7 +198,7 @@ local sets = {
         Feet = "Hct. Leggings +1"
 	},
 	BreathProc = {
-		Head = "Drachen Armet",
+		Head = "Drn. Armet +1",
 		Neck = "Evasion Torque",
 		Ear1 = "Cassie Earring",
 		Body = "Homam Corazza",
@@ -323,7 +326,7 @@ profile.HandleCommand = function(args)
 		varhelper.SetCycle("Priority", 3);
 	elseif (args[1] == "carbonara") then --Carbonara Toggle
 		varhelper.AdvanceToggle("Carbonara");
-	elseif (args[1] == "forceproc") then --Force Drachen Armet Proc Set Toggle
+	elseif (args[1] == "forceproc") then --Force Drn. Armet +1 Proc Set Toggle
 		varhelper.AdvanceToggle("ForceProc");
 	elseif (args[1] == "mc") then 
 		varhelper.AdvanceToggle("MC");

@@ -11,7 +11,7 @@ local sets = {
 	Idle = {
 		Main = "Terra's Staff",
 		Ammo = "Hedgehog Bomb",
-		Head = "Summoner's Horn",
+		Head = "Smn. Horn +1",
         Neck = "Jeweled Collar +1",
         Ear1 = "Merman's Earring",
 		Ear2 = "Merman's Earring",
@@ -78,7 +78,7 @@ local sets = {
 	Midshot = {},
 	WS = {},
 	BloodPactCooldown = {
-		Head = "Summoner's Horn",
+		Head = "Smn. Horn +1",
 		Body = "Yinyang Robe",
 		Hands = "Smn. Bracers +1",
 		Legs = "Summoner's Spats",
@@ -127,7 +127,7 @@ local sets = {
 	DayMatch = {
 		Body = "Summoner's Dblt."
 	},
-	WeatherMatch = {Head = "Summoner's Horn"}
+	WeatherMatch = {Head = "Smn. Horn +1"}
 }
 
 local profile = {};
