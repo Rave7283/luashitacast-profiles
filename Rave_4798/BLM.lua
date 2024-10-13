@@ -39,6 +39,9 @@ local sets = {
         Legs = "Src. Tonban +1",
         Feet = "Src. Sabots +1"
 	},
+	Idle_Spikes = {
+		Ring2 = "Opuntia Hoop"
+	},
 	Resting = {
 		Main = "Pluto's Staff",
         Ammo = "Hedgehog Bomb",
@@ -171,36 +174,6 @@ local sets = {
         Legs = "Wzd. Tonban +1",
         Feet = "Rostrum Pumps"
 	},
-	Endcast_Drain = {
-		Ammo = "Phtm. Tathlum",
-        Head = "Nashira Turban",
-        Neck = "Dark Torque",
-		Ear1 = "Loquac. Earring",
-        Ear2 = "Phtm. Earring +1",
-        Body = "Nashira Manteel",
-        Hands = "Src. Gloves +1",
-        Ring1 = "Snow Ring",
-        Ring2 = "Overlord's Ring",
-        Back = "Merciful Cape",
-        Waist = "Swift Belt",
-        Legs = "Wzd. Tonban +1",
-        Feet = "Rostrum Pumps"
-	},
-	Endcast_Aspir = {
-		Ammo = "Phtm. Tathlum",
-        Head = "Nashira Turban",
-        Neck = "Dark Torque",
-		Ear1 = "Loquac. Earring",
-        Ear2 = "Phtm. Earring +1",
-        Body = "Nashira Manteel",
-        Hands = "Src. Gloves +1",
-        Ring1 = "Serket Ring",
-        Ring2 = "Overlord's Ring",
-        Back = "Merciful Cape",
-        Waist = "Swift Belt",
-        Legs = "Wzd. Tonban +1",
-        Feet = "Rostrum Pumps"
-	},
 	Endcast_Enfeebling = {
 		Ammo = "Dream Sand",
 		Head = "Genie Tiara",
@@ -251,6 +224,22 @@ local sets = {
 		Legs = "Nashira Seraweels",
 		Feet = "Src. Sabots +1"
 	},
+	Endcast_Spikes = {
+        Main = "Kirin's Pole",
+        Ammo = "Dream Sand",
+        Head = "Zenith Crown +1",
+        Neck = "Prudence Torque",
+        Ear1 = "Loquac. Earring",
+        Ear2 = "Magnetic Earring",
+        Body = "Mahatma Hpl.",
+        Hands = "Wzd. Gloves +1",
+        Ring1 = "Serket Ring",
+        Ring2 = "Omniscient Ring",
+        Back = "Prism Cape",
+        Waist = "Sorcerer's Belt",
+        Legs = "Mahatma Slops",
+        Feet = "Src. Sabots +1",
+    },
 	Endcast_Stoneskin = {
 		Main = "Kirin's Pole",
 		Ammo = "Dream Sand",
@@ -267,6 +256,51 @@ local sets = {
         Legs = "Zenith Slacks",
         Feet = "Rostrum Pumps"
 	},
+	Endcast_Drain = {
+		Ammo = "Phtm. Tathlum",
+        Head = "Nashira Turban",
+        Neck = "Dark Torque",
+		Ear1 = "Loquac. Earring",
+        Ear2 = "Phtm. Earring +1",
+        Body = "Nashira Manteel",
+        Hands = "Src. Gloves +1",
+        Ring1 = "Snow Ring",
+        Ring2 = "Overlord's Ring",
+        Back = "Merciful Cape",
+        Waist = "Swift Belt",
+        Legs = "Wzd. Tonban +1",
+        Feet = "Rostrum Pumps"
+	},
+	Endcast_Aspir = {
+		Ammo = "Phtm. Tathlum",
+        Head = "Nashira Turban",
+        Neck = "Dark Torque",
+		Ear1 = "Loquac. Earring",
+        Ear2 = "Phtm. Earring +1",
+        Body = "Nashira Manteel",
+        Hands = "Src. Gloves +1",
+        Ring1 = "Serket Ring",
+        Ring2 = "Overlord's Ring",
+        Back = "Merciful Cape",
+        Waist = "Swift Belt",
+        Legs = "Wzd. Tonban +1",
+        Feet = "Rostrum Pumps"
+	},
+	Endcast_Stun = {
+		Ammo = "Dream Sand",
+        Head = "Nashira Turban",
+        Neck = "Dark Torque",
+		Ear1 = "Loquac. Earring",
+        Ear2 = "Magnetic Earring",
+        Body = "Nashira Manteel",
+        Hands = "Nashira Gages",
+        Ring1 = "Serket Ring",
+        Ring2 = "Omniscient Ring",
+        Back = "Merciful Cape",
+        Waist = "Swift Belt",
+        Legs = "Nashira Seraweels",
+        Feet = "Rostrum Pumps"
+	},
 	Preshot = {ammo = "Pebble"},
 	Midshot = {},
 	DiabolosPole = {Main = "Diabolos's Pole"},
@@ -279,7 +313,7 @@ local sets = {
 	FirstNuke1 = {Ammo = "Hedgehog Bomb", Head = "Zenith Crown +1", Ring1 = "Serket Ring"},
 	FirstNuke2 = {Head = "Zenith Crown +1", Ammo = "Hedgehog Bomb"},
 	FirstNuke3 = {Head = "Zenith Crown +1"}
-};
+ };
 sets.Endcast_EnfeeblingMnd = gFunc.Combine(sets.Endcast_Enfeebling,sets.Endcast_EnfeeblingMnd)
 sets.Endcast_EnfeeblingInt = gFunc.Combine(sets.Endcast_Enfeebling,sets.Endcast_EnfeeblingInt)
 
@@ -378,6 +412,8 @@ profile.OnUnload = function()
 end
 
 profile.HandleCommand = function(args)
+	local action = gData.GetAction();
+
 	if (args[1] == "lockable") then --Cycle Lockable Behavior
 		--Unlock All
 		if (varhelper.GetCycle("Lockable") == "Always") then
@@ -389,8 +425,10 @@ profile.HandleCommand = function(args)
 		varhelper.AdvanceCycle("Nuke Mode");
 	elseif (args[1] == "mb") then 
 		varhelper.AdvanceToggle("MB");
-		if (varhelper.GetToggle("MB")) then
-			gFunc.ForceEquipSet(sets.MagicBurst)
+		if (varhelper.GetToggle("MB") and action ~= nil and action.Skill == "Elemental Magic") then
+			gFunc.SetMidDelay(0);
+			profile.HandleMidcast();
+			gFunc.ForceEquipSet(sets.MagicBurst);
 		end
 	elseif (args[1] == "forcehp") then
 		varhelper.AdvanceToggle("Force HP");
@@ -426,6 +464,10 @@ profile.HandleDefault = function()
 		else
 			gFunc.EquipSet(sets.Idle);
 			
+			if (gData.GetBuffCount("Ice Spikes") + gData.GetBuffCount("Shock Spikes") + gData.GetBuffCount("Blaze Spikes") > 0) then
+				gFunc.EquipSet(sets.Idle_Spikes);
+			end
+
 			helpers.DucalAketonCheck(environment);
 			
 			--Lockable Override
@@ -525,21 +567,25 @@ profile.HandleMidcast = function()
 	elseif (spell.Skill == "Dark Magic") then
 		gFunc.Equip("main", common.ElementalStaffTable[spell.Element]);
 		
-		if (spell.Name == "Drain") then
-			gFunc.EquipSet(sets.Endcast_Drain);
-		elseif (spell.Name == "Aspir") then
-			gFunc.EquipSet(sets.Endcast_Aspir);
+		if (spell.Name == "Stun") then
+			gFunc.EquipSet(sets.Endcast_Stun);
 		else
-			gFunc.EquipSet(sets.Endcast_Dark);
-		end		
-		--Diabolos Pole Check
-		if ((spell.Name == "Drain" or spell.Name == "Aspir") and helpers.WeatherCheck(environment, spell.Element) > 0) then
-			gFunc.EquipSet(sets.DiabolosPole);
-		end
-		--Obi Check
-		if(helpers.ObiCheck(environment, spell.Element)) then
-			gFunc.Equip("waist", common.ElementalObiTable[spell.Element]);
-		end
+			if ((spell.Name == "Drain" or spell.Name == "Aspir")) then
+				gFunc.EquipSet("Endcast_" + spell.Name);
+
+				--Diabolos Pole Check
+				if (helpers.WeatherCheck(environment, spell.Element) > 0) then
+					gFunc.EquipSet(sets.DiabolosPole);
+				end			
+			else
+				gFunc.EquipSet(sets.Endcast_Dark);
+			end
+
+			--Obi Check
+			if (helpers.ObiCheck(environment, spell.Element)) then
+				gFunc.Equip("waist", common.ElementalObiTable[spell.Element]);
+			end
+		end	
 	--Enfeebling Magic
 	elseif (spell.Skill == "Enfeebling Magic") then
 		gFunc.Equip("main", common.ElementalStaffTable[spell.Element]);
@@ -566,6 +612,8 @@ profile.HandleMidcast = function()
 		elseif (spell.Name == "Invisible") then
 			gFunc.EquipSet(sets.Endcast_ConserveMP);
 			gFunc.EquipSet(common.sets.Invisible)
+		elseif (spell.Name:endswith("Spikes")) then
+			gFunc.EquipSet(sets.Endcast_Spikes)
 		else 
 			gFunc.EquipSet(sets.Endcast_ConserveMP);
 		end
